@@ -57,7 +57,9 @@ async function initWebGPU() {
   // Get the canvas and its WebGPU context
   const canvas = document.getElementById('gpuCanvas');
 
-  const adapter = await navigator.gpu.requestAdapter();
+  const adapter = await navigator.gpu.requestAdapter({
+    powerPreference: 'high-performance'
+  });
   if (!adapter) {
     console.error('WebGPU adapter not available. Your hardware or browser may not support WebGPU.');
     return;
